@@ -31,9 +31,6 @@ summary(cars)
 ## 
 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
 
@@ -65,7 +62,7 @@ qplot(cylinders, data=cars, geom="bar", fill=factor(cylinders))
 
 #### Analysis on Fuel in the highways 
 ```{r}
-qplot(fuel_h, data=cars, geom="histogram", bins=30)
+qplot(fuel_h, data=cars, geom="bar", bins=30)
 ```
 
 
@@ -75,18 +72,18 @@ qplot(fuel_h, data=cars, geom="histogram", bins=30)
 
 
 ```{r}
-qplot(fuel_c, data=cars, geom="histogram", bins=30)
+qplot(fuel_c, data=cars, geom="bar", bins=30)
 ```
  
 
 
 ```{r}
 ggplot(data = cars) + 
-  geom_point(mapping = aes(x =engine , y =fuel_h ), color='red')
+  geom_point(mapping = aes(x =engine , y =Annually ), color='blue')
 
 ggplot(data = cars) + 
-  geom_point(mapping = aes(x = fuel_h, y =engine, color=type)) +
-  facet_wrap(~ type, nrow = 2)
+  geom_point(mapping = aes(x = Annually, y =cylinders, color=fuel)) +
+  facet_wrap(~ fuel, nrow = 2)
 
 ```
 
@@ -94,7 +91,7 @@ ggplot(data = cars) +
 
 ```{r}
 
-qplot(manufacturer, data=cars, geom="bar", fill=manufacturer)
+qplot(size, data=cars, geom="bar", fill=manufacturer)
 
 ```
 
@@ -105,14 +102,14 @@ qplot(manufacturer, data=cars, geom="bar", fill=manufacturer)
 
 
 ```{r}
-qplot(cylinders, data=cars, geom="bar", fill=factor(cylinders))
+qplot(cylinders, data=cars, geom="bar", fill=cylinders)
 
 ```
 
 
 
 ```{r}
-qplot(fuel_h, data=cars, geom="histogram", bins=30)
+qplot(cars, data=cars, geom="bar", bins=30)
 ```
 
 
@@ -122,18 +119,15 @@ qplot(fuel_h, data=cars, geom="histogram", bins=30)
 
 
 ```{r}
-qplot(fuel_c, data=cars, geom="histogram", bins=30)
+qplot(manufacturer, data=cars, geom="bar", bins=30)
 ```
 
 
 
 ```{r}
 ggplot(data = cars) + 
-  geom_point(mapping = aes(x = engine, y = fuel_h), color='red')
-
-ggplot(data = cars) + 
-  geom_point(mapping = aes(x = engine, y = fuel_h, color=type)) +
-  facet_wrap(~ type, nrow = 2)
+  geom_point(mapping = aes(x = engine, y = fuel_h), color='blue')
+)
 
 ```
 

@@ -1,0 +1,141 @@
+---
+title: "Cars"
+author: "Fahad Almansour"
+date: "11/11/2020"
+output: html_document
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(cache = TRUE, 
+                      message = FALSE,
+                      warning = FALSE,
+                      echo = FALSE,
+                      autodep = TRUE, 
+                      fig.align = "center")
+
+library(tidyverse)
+library(rio)
+library(tinytex)
+library(ggplot2)
+library(data.table)
+library(scales)
+library(car, quietly = TRUE)
+
+
+```
+
+```{r cars}
+summary(cars)
+```
+
+## 
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+```{r}
+
+# read the data 
+cars <- read_csv ("cars.csv")
+#str(cars)
+```
+
+
+
+
+#### Analysis  R project
+
+
+
+```{r}
+
+qplot(manufacturer, data=cars, geom="bar", fill=manufacturer)
+
+```
+
+```{r}
+qplot(cylinders, data=cars, geom="bar", fill=factor(cylinders))
+
+```
+
+#### Analysis on Fuel in the highways 
+```{r}
+qplot(fuel_h, data=cars, geom="histogram", bins=30)
+```
+
+
+
+
+#### Analysis on Fuel in the city
+
+
+```{r}
+qplot(fuel_c, data=cars, geom="histogram", bins=30)
+```
+ 
+
+
+```{r}
+ggplot(data = cars) + 
+  geom_point(mapping = aes(x =engine , y =fuel_h ), color='red')
+
+ggplot(data = cars) + 
+  geom_point(mapping = aes(x = fuel_h, y =engine, color=type)) +
+  facet_wrap(~ type, nrow = 2)
+
+```
+
+
+
+```{r}
+
+qplot(manufacturer, data=cars, geom="bar", fill=manufacturer)
+
+```
+
+
+
+### Analysis cylinders of the vehicle
+
+
+
+```{r}
+qplot(cylinders, data=cars, geom="bar", fill=factor(cylinders))
+
+```
+
+
+
+```{r}
+qplot(fuel_h, data=cars, geom="histogram", bins=30)
+```
+
+
+
+
+### Analysis on Fuel in the City
+
+
+```{r}
+qplot(fuel_c, data=cars, geom="histogram", bins=30)
+```
+
+
+
+```{r}
+ggplot(data = cars) + 
+  geom_point(mapping = aes(x = engine, y = fuel_h), color='red')
+
+ggplot(data = cars) + 
+  geom_point(mapping = aes(x = engine, y = fuel_h, color=type)) +
+  facet_wrap(~ type, nrow = 2)
+
+```
+
+
+
